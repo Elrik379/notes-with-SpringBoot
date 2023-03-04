@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Заметки</title>
+</head>
+<body>
+<h2>Заметки</h2>
+<table border="1px" cellpadding="1" cellspacing="1" style="width: 500px">
+  <tr>
+    <th>Дата</th>
+    <th>Заметка</th>
+  </tr>
+  <tr th:each="p: ${notes}" >
+    <td align="center" th:text="${p.date}"></td>
+    <td th:text="${p.noteText}"></td>
+    <td> <a th:href="@{delete/{id}(id=${p.id})}">Удалить </a> </td>
+  </tr>
+</table>
+
+<h2>Добавить заметку</h2>
+<form action="/notes" method="POST">
+  Текст: <input style=position:absolute;left:6%;
+              type="text"
+              name="noteText"><br />
+  <button type="submit">Добавить</button>
+</form>
+
+</body>
+</html>
